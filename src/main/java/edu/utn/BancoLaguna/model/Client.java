@@ -24,7 +24,7 @@ public class Client {
     private String name;
     private String username;
     private String password;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "a")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "client")
     @ToString.Exclude
     private List<Account> accounts;
 }

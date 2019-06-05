@@ -30,6 +30,6 @@ public class LoginController {
         }
 
         //TODO: Redirection to client accounts page
-        return return new RedirectView("/AccountView");
+        return new RedirectView("/AccountView");
     }
 }
