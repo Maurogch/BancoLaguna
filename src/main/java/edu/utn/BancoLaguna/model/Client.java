@@ -27,4 +27,10 @@ public class Client {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "client")
     @ToString.Exclude
     private List<Account> accounts;
+
+    public Client(String name, String username, String password) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
 }
