@@ -14,7 +14,7 @@ public class BancoLagunaApplication {
 		SpringApplication.run(BancoLagunaApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	ApplicationRunner init(ClientRepository clientRepository) {
 		return args -> {
 			Client client = new Client("Cliente1", "UserCliente1", "pass");
@@ -22,8 +22,6 @@ public class BancoLagunaApplication {
 			clientRepository.save(client);
 			clientRepository.save(client2);
 		};
-	}
-
-	// Fix the CORS errors
+	}*/
 
 }
