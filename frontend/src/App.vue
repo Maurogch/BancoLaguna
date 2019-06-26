@@ -1,9 +1,12 @@
 <template>
-<v-app>
+<v-app> <!--veutify needs to surround the whole app with this tag-->
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/list">List</router-link> |
+      <router-link to="/test">Test Axios</router-link> |
+      <router-link to="/accounts">Accounts</router-link> |
+      <router-link to="/transfers">Transfers</router-link>
     </div>
     <router-view/>
   </div>

@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Home from './views/Home.vue'
+import List from './components/List.vue'
+import Test from './components/Test.vue'
+import Transfers from './components/Transfers.vue'
+import Accounts from './components/Accounts.vue'
 
 Vue.use(Router)
 
@@ -14,12 +19,22 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('./components/List.vue')
-    }
+      path: '/list',
+      component: List
+    },
+    {
+      path: '/test',
+      component: Test
+    },
+    {
+      path: '/transfers',
+      component: Transfers
+    },
+    {
+      path: '/accounts',
+      component: Accounts
+    },
+    //redirect to home if page does not exist
+    { path: '*', redirect: '/' }
   ]
 })
