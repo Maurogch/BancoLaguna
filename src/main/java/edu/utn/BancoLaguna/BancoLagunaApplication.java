@@ -1,6 +1,5 @@
 package edu.utn.BancoLaguna;
 
-import edu.utn.BancoLaguna.model.Client;
 import edu.utn.BancoLaguna.repository.ClientRepository;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,14 +13,14 @@ public class BancoLagunaApplication {
 		SpringApplication.run(BancoLagunaApplication.class, args);
 	}
 
-	/*@Bean
+	@Bean
 	ApplicationRunner init(ClientRepository clientRepository) {
 		return args -> {
-			Client client = new Client("Cliente1", "UserCliente1", "pass");
+			/*Client client = new Client("Cliente1", "UserCliente1", "pass");
 			Client client2 = new Client("Cliente2", "UserCliente2", "pass");
 			clientRepository.save(client);
-			clientRepository.save(client2);
+			clientRepository.save(client2);*/
 		};
-	}*/
+	}
 
 }
