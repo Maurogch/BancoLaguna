@@ -91,7 +91,7 @@
           </v-form>
         </material-card>
       </v-flex>
-      <!--<v-snackbar
+      <v-snackbar
               :color="color"
               :bottom="false"
               :top="false"
@@ -113,7 +113,7 @@
               >
                 mdi-close-circle
               </v-icon>
-            </v-snackbar>-->
+            </v-snackbar>
     </v-layout>
   </v-container>
 </template>
@@ -157,20 +157,20 @@ export default {
         console.log(this.sum);
         
         axiosAccount.transfer(this.originCbu, this.destinationCbu, this.sum)
-        .then(function (response) {
+        .then( (response)=> {
           // handle success
-          //this.color = "green";
-          //this.message = response.data;
-          //this.snackbar = true;
-          alert(response.data)
+          this.color = "green";
+          this.message = response.data;
+          this.snackbar = true;
+          //alert(response.data)
           console.log(response);
         })
-        .catch(function (error){
+        .catch((error)=>{
           // handle error
-          //this.color = "red";
-          //this.message = error.response.data;
-          //this.snackbar = true;
-          alert(error.response.data)
+          this.color = "red";
+          this.message = error.response.data;
+          this.snackbar = true;
+          //alert(error.response.data)
           console.log(error);
           console.log(error.response.data);
         })
