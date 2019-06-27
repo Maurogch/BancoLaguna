@@ -1,5 +1,6 @@
 package edu.utn.BancoLaguna.controller;
 
+import edu.utn.BancoLaguna.exception.NotFoundException;
 import edu.utn.BancoLaguna.model.Account;
 import edu.utn.BancoLaguna.model.Client;
 import edu.utn.BancoLaguna.model.Transfer;
@@ -50,7 +51,7 @@ public class AccountController {
         try {
             Transfer transfer = convertToEntity(transferDTO);
             Account origin = accountRepository.findById(transferDTO.getId())
-                    .orElseThrow(() -> new HttpClientErrorException(HttpStatus.BAD_REQUEST, String.format("No existe la cuenta con el id: %s",id)));
+                    .orElseThrow(() -> new NotFoundException());
             Account destination = accountRepository.getByCbu(transferDTO.getDestinationCbu());
 
             if(!origin.getType().equals(destination.getType())){
@@ -78,6 +79,8 @@ public class AccountController {
             return ResponseEntity.ok().body("Transferencia Exitosa");
         } catch (ParseException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Parse Error");
+        } catch (NotFoundException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No existe la cuenta con ese CBU");
         }
 
     }
