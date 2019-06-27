@@ -20,6 +20,7 @@
         <v-data-table
         :headers="headers"
         :items="items"
+        :pagination.sync="pagination"
         class="elevation-1"
         >
           <template slot="headerCell" slot-scope="props">
@@ -127,12 +128,16 @@ import axiosClient from '../axios/client'
 export default {
   data: () => ({
     userId: null,
+    pagination: {
+      sortBy: 'dateTime',
+      descending: true
+    },
     headers: [
           { text: 'Tipo de cuenta', value: 'type', align: 'right', sortable: false,},
           { text: 'Cuenta orígen', value: 'cbuOrigin', align: 'right' },
           { text: 'Cuenta destino', value: 'cbuDestination', align: 'right' },
           { text: 'Monto', value: 'sum', align: 'right' },
-          { text: 'Fecha', value: 'dateTime', align: 'right' }
+          { text: 'Fecha', value: 'dateTime', align: 'right', isDescending: true}
         ],
         items: [
           /*

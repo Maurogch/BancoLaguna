@@ -10,8 +10,8 @@ export default {
   //createNew: (text, completed) => instance.post('todos', {title: text, completed: completed}),  
   // (R)ead  
   getAll: () => instance.get('account'),
-  // (U)pdate  
-  updateForId: (id, newBalance) => instance.put('account/'+id, {balance: newBalance}),  
+  // Transfer money from one account to another
+  transfer: (id, cbu, sum) => instance.post('account/'+id+'/transfer', {id: id, destinationCbu: cbu, sum: sum})  
   // (D)elete  
   //removeForId: (id) => instance.delete('todos/'+id)  
 }

@@ -1,7 +1,7 @@
 package edu.utn.BancoLaguna.controller;
 
 import edu.utn.BancoLaguna.model.Transfer;
-import edu.utn.BancoLaguna.model.TransferDTO;
+import edu.utn.BancoLaguna.model.TransferHistoryDTO;
 import edu.utn.BancoLaguna.repository.TransferRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class TransferController {
 
 
     @GetMapping("/{id}")
-    public List<TransferDTO> getAllbyId(@PathVariable("id") Integer id){
+    public List<TransferHistoryDTO> getAllbyId(@PathVariable("id") Integer id){
         List<Transfer> transfers = transferRepository.findAll();
 
         return transfers.stream()
@@ -34,7 +34,7 @@ public class TransferController {
                 .collect(Collectors.toList());
     }
 
-    private TransferDTO convertToDto(Transfer transfer){
-        return modelMapper.map(transfer, TransferDTO.class);
+    private TransferHistoryDTO convertToDto(Transfer transfer){
+        return modelMapper.map(transfer, TransferHistoryDTO.class);
     }
 }

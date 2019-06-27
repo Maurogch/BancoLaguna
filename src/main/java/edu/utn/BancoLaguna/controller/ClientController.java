@@ -3,7 +3,7 @@ package edu.utn.BancoLaguna.controller;
 import edu.utn.BancoLaguna.model.Account;
 import edu.utn.BancoLaguna.model.Client;
 import edu.utn.BancoLaguna.model.Transfer;
-import edu.utn.BancoLaguna.model.TransferDTO;
+import edu.utn.BancoLaguna.model.TransferHistoryDTO;
 import edu.utn.BancoLaguna.repository.ClientRepository;
 import edu.utn.BancoLaguna.repository.TransferRepository;
 import org.modelmapper.ModelMapper;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,7 +60,7 @@ public class ClientController {
     }
 
     @GetMapping("/{id}/transfers")
-    public List<TransferDTO> getAllbyId(@PathVariable("id") Integer id){
+    public List<TransferHistoryDTO> getAllbyId(@PathVariable("id") Integer id){
         List<Transfer> transfers = transferRepository.findAll();
 
         return transfers.stream()
@@ -69,8 +68,8 @@ public class ClientController {
                 .collect(Collectors.toList());
     }
 
-    private TransferDTO convertToDto(Transfer transfer){
-        TransferDTO transferDTO = modelMapper.map(transfer, TransferDTO.class);            //Date-Time conversion should not be done without moddel mapper
+    private TransferHistoryDTO convertToDto(Transfer transfer){
+        TransferHistoryDTO transferDTO = modelMapper.map(transfer, TransferHistoryDTO.class);            //Date-Time conversion should not be done without moddel mapper
         //transferDTO.setDateTime(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT) //With fomat style, ex: 8/23/16 1:12 PM
           //      .format(transfer.getDateTime()));
         transferDTO.setDateTime(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")         //With pattern

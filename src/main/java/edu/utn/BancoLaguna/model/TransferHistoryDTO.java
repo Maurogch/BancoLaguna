@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransferDTO {
-    private Integer id;
-    private String destinationCbu;
+public class TransferHistoryDTO {
+    private String type;
+    private String cbuOrigin;
+    private String cbuDestination;
     private double sum;
+    private String dateTime;
 }
